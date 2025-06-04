@@ -1,0 +1,57 @@
+{
+  "name": "n8n-nodes-typesense",
+  "version": "1.0.0",
+  "description": "n8n node for Typesense search engine",
+  "keywords": [
+    "n8n-community-node-package"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "author": {
+    "name": "Aviel",
+    "email": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "engines": {
+    "node": ">=20.10"
+  },
+  "packageManager": "npm@>=10.0.0",
+  "main": "index.js",
+  "scripts": {
+    "preinstall": "npx only-allow npm",
+    "build": "tsc && npm run copy-files",
+    "copy-files": "copyfiles -u 1 \"src/**/*.{png,svg}\" dist/",
+    "dev": "tsc --watch",
+    "format": "prettier src --write",
+    "lint": "eslint src --ext .ts",
+    "lintfix": "eslint src --ext .ts --fix",
+    "prepublishOnly": "npm run build && npm run lint -c .eslintrc.prepublish.js src"
+  },
+  "files": [
+    "dist"
+  ],
+  "n8n": {
+    "n8nNodesApiVersion": 1,
+    "credentials": [
+      "dist/credentials/TypesenseApi.credentials.js"
+    ],
+    "nodes": [
+      "dist/nodes/Typesense/Typesense.node.js"
+    ]
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "@typescript-eslint/parser": "^7.15.0",
+    "copyfiles": "^2.4.1",
+    "eslint": "^8.56.0",
+    "eslint-plugin-n8n-nodes-base": "^1.16.1",
+    "prettier": "^3.3.2",
+    "typescript": "^5.5.3"
+  },
+  "peerDependencies": {
+    "n8n-workflow": "*"
+  }
+}
